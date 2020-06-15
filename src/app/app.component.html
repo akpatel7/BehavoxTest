@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-default">
-    <a class="navbar-brand" href="#">Ma Games</a>
+    <a class="navbar-brand" href="#">Email Archive Viewer</a>
   </nav>
 </header>
 
@@ -9,12 +9,14 @@
     <nav class="navbar">
       <input class="form-control" type="text" name="search">      
     </nav>
+    <pre>emails</pre>
     <table class="table">
       <thead>
         <tr>
           <th>#</th>
           <th>Name</th>
           <th>Subject</th>
+          <th>Email</th>
         </tr>
       </thead>
       <tbody>
@@ -22,6 +24,7 @@
           <td>{{i}}</td>
           <td>{{email.name}}</td>
           <td>{{email.subject}}</td>
+          <td>{{email.email}}</td>
         </tr>
       </tbody>
     </table>
