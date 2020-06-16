@@ -10,85 +10,84 @@ import { EMAILS } from '../data/emails';
 export class AppComponent {
   title = 'Email Archive Viewer';
 
+  //filter
+  customFilter: string = '';
+  //sorting
+  key: string = 'name'; //set default
+  reverse: boolean = false;
+  sort(key){
+    this.key = key;
+    this.reverse = !this.reverse;
+  }
+
+  //initializing p to one
+  p: number = 1;
+
   emails = [
     {
-      "_id": "5ee6bdbf16572c2fa788c313",
+      "_id": "5ee83c8f4bc99b8895c8cf4e",
       "index": 0,
-      "guid": "c62785f9-2e6e-438a-aabd-3a63e3585aeb",
-      "name": "Lois Dickerson",
-      "email": "loisdickerson@tribalog.com",
-      "subject": "Latest Tech"
+      "guid": "b41e3bbc-b1d1-4bde-9e6c-66cb6acd5ffd",
+      "name": {
+        "first": "April",
+        "last": "Hartman"
+      },
+      "email": "april.hartman@behavox.com",
+      "subject": "Latest Tech",
+      "date": "Thursday, June 13, 2019 12:22 AM",
+      "body": "Commodo duis consequat ad ullamco cillum id anim elit labore laboris officia. Consectetur ut nostrud enim dolore. Ea mollit aliqua esse excepteur culpa nostrud ullamco ex. Dolore quis qui ex laboris consequat occaecat cupidatat proident officia ut esse aliqua."
     },
     {
-      "_id": "5ee6bdbf062af09a1a491052",
+      "_id": "5ee83c8f0d4895bf92b0bc14",
       "index": 1,
-      "guid": "29568239-d8f8-44a8-9b0d-489df8f24e3a",
-      "name": "Burton Farrell",
-      "email": "burtonfarrell@tribalog.com",
-      "subject": "Internal"
+      "guid": "0f6a0210-caba-41a5-8288-852fc5ebfaa0",
+      "name": {
+        "first": "Aurora",
+        "last": "Bennett"
+      },
+      "email": "aurora.bennett@behavox.com",
+      "subject": "Hi",
+      "date": "Saturday, February 28, 2015 8:28 AM",
+      "body": "Consectetur officia consectetur veniam nisi consequat amet anim aliqua in adipisicing tempor. Velit officia quis est Lorem voluptate ea do incididunt mollit dolore. Amet deserunt exercitation do in esse veniam duis. Laborum nisi dolore aliquip do laborum sint amet laboris aute fugiat. Nostrud labore laboris nulla mollit mollit in."
     },
     {
-      "_id": "5ee6bdbf52f286b926308dc7",
+      "_id": "5ee83c8f573c2d413fd77aed",
       "index": 2,
-      "guid": "b708f241-5a44-4323-93f4-23b9f8657518",
-      "name": "Kristi Lloyd",
-      "email": "kristilloyd@tribalog.com",
-      "subject": "Behavox"
+      "guid": "633fe0e4-87d8-486b-9bc4-3e46160ada35",
+      "name": {
+        "first": "Alice",
+        "last": "Simpson"
+      },
+      "email": "alice.simpson@behavox.com",
+      "subject": "Charity run",
+      "date": "Sunday, February 9, 2020 12:21 AM",
+      "body": "Proident cillum voluptate irure proident ullamco. Proident proident quis nulla sit velit consectetur in. In cillum ea ex velit officia tempor laborum consequat elit. Elit ex dolor Lorem magna irure cillum sint est cupidatat ad adipisicing fugiat. Mollit Lorem laboris magna ea consequat do sunt elit labore et ea voluptate laboris ex. Proident minim aliquip consequat officia fugiat officia velit consequat tempor esse laborum. Nostrud qui consectetur aliqua duis exercitation proident nulla."
     },
     {
-      "_id": "5ee6bdbf604bbad4cd4fff12",
+      "_id": "5ee83c8f8c64956c5c6b4946",
       "index": 3,
-      "guid": "f4c00b96-8a35-48a6-92a9-0161b281747c",
-      "name": "Opal Simon",
-      "email": "opalsimon@tribalog.com",
-      "subject": "Latest Tech"
+      "guid": "3bd1b07e-c456-4cbd-9621-3cd6cb484228",
+      "name": {
+        "first": "Kerri",
+        "last": "Abbott"
+      },
+      "email": "kerri.abbott@behavox.com",
+      "subject": "Urgent: Memo",
+      "date": "Thursday, August 9, 2018 3:16 AM",
+      "body": "Voluptate laboris consectetur in tempor pariatur minim est do ea id. Adipisicing occaecat labore eiusmod sit reprehenderit id nisi excepteur veniam. Magna officia magna ullamco aliquip consequat incididunt commodo aliquip sunt laboris magna labore. Nulla Lorem adipisicing quis tempor sint aliqua reprehenderit consequat. Ut sint et laborum in aliquip veniam veniam quis tempor mollit dolore."
     },
     {
-      "_id": "5ee6bdbfc2a73a6aa3e9f849",
+      "_id": "5ee83c8f670afcc3f8ffb839",
       "index": 4,
-      "guid": "4726dbf1-bb26-4a10-b34d-4d1a7d4aed36",
-      "name": "Ortiz Mays",
-      "email": "ortizmays@tribalog.com",
-      "subject": "Hockey team"
-    },
-    {
-      "_id": "5ee6bdbfc26185502434c564",
-      "index": 5,
-      "guid": "7b7bb8eb-c414-4300-b845-10b59a200fb8",
-      "name": "Estrada Mendez",
-      "email": "estradamendez@tribalog.com",
-      "subject": "Internal"
-    },
-    {
-      "_id": "5ee6bdbf61475f7c9345f9c4",
-      "index": 6,
-      "guid": "1725f30f-b1f0-490c-9f90-ea20ee89e1ba",
-      "name": "Cote George",
-      "email": "cotegeorge@tribalog.com",
-      "subject": "Hi"
-    },
-    {
-      "_id": "5ee6bdbf4ca235336be4563f",
-      "index": 7,
-      "guid": "be16d766-5e75-493f-8dab-198fbd64bc17",
-      "name": "Moody Nguyen",
-      "email": "moodynguyen@tribalog.com",
-      "subject": "Dinner after work"
-    },
-    {
-      "_id": "5ee6bdbf926859bec92ecca7",
-      "index": 8,
-      "guid": "d2ff9b6a-4acc-46ee-acb2-e3e627ee6440",
-      "name": "Marylou Torres",
-      "email": "maryloutorres@tribalog.com",
-      "subject": "Dinner after work"
-    },
-    {
-      "_id": "5ee6bdbf94906757465c1499",
-      "index": 9,
-      "guid": "18226725-80cf-440b-afb2-335deb7f69fb",
-      "name": "Maggie Duran",
-      "email": "maggieduran@tribalog.com",
-      "subject": "Latest Tech"
-    }];
+      "guid": "6388c38f-99a4-4575-a70d-f0dd2cd7f5cf",
+      "name": {
+        "first": "Susan",
+        "last": "Schroeder"
+      },
+      "email": "susan.schroeder@behavox.com",
+      "subject": "Hockey team",
+      "date": "Wednesday, December 7, 2016 4:29 PM",
+      "body": "Consectetur aliquip pariatur et sit ea incididunt aliquip. Pariatur non voluptate sit laborum sit cupidatat labore exercitation veniam proident anim. Cillum est consectetur eu ullamco cupidatat ad officia officia. Tempor est ex tempor labore Lorem ad velit reprehenderit ut non ipsum."
+    }
+  ]
 }

@@ -7,26 +7,44 @@
 <div class="container">
   <div class="row">
     <nav class="navbar">
-      <input class="form-control" type="text" name="search">      
+      <label for="search">Search</label>
+      <input class="form-control" type="text" name="search" [(ngModel)]="customFilter">      
     </nav>
-    <pre>emails</pre>
     <table class="table">
       <thead>
         <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Subject</th>
+          <!-- <th>#</th> -->
+          <th (click)="sort('name')">Person
+            <span class="glyphicon sort-icon" *ngIf="key =='name'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+          </th>
+          <!-- <th (click)="sort('email')">Email
+            <span class="glyphicon sort-icon" *ngIf="key =='email'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+          </th> -->
           <th>Email</th>
+          <!-- <th (click)="sort('subject')">Subject
+            <span class="glyphicon sort-icon" *ngIf="key =='subject'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+          </th> -->
+          <th>Subject</th>
+          <th (click)="sort('date')">Date
+            <span class="glyphicon sort-icon" *ngIf="key =='date'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+          </th>
+          <!-- <th (click)="sort('Body')">Body
+            <span class="glyphicon sort-icon" *ngIf="key =='date'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+          </th> -->
+          <th>Body</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let email of emails; let i = index">
-          <td>{{i}}</td>
-          <td>{{email.name}}</td>
-          <td>{{email.subject}}</td>
+        <tr *ngFor="let email of emails | orderBy: key : reverse | filter: customFilter | paginate: { itemsPerPage: 15, currentPage: p }; let i = index">
+          <!-- <td>{{i}}</td> -->
+          <td>{{email.name.first + ' ' + email.name.last}}</td>
           <td>{{email.email}}</td>
+          <td>{{email.subject}}</td>
+          <td>{{email.date}}</td>
+          <td>{{email.body}}</td>
         </tr>
       </tbody>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </table>
   </div>
 </div>
