@@ -13,33 +13,24 @@
     <table class="table">
       <thead>
         <tr>
-          <!-- <th>#</th> -->
-          <th (click)="sortName()">Person
-            <span [hidden]="reverse">▼</span>
-            <span [hidden]="!reverse">▲</span>
+          <th>#</th>
+          <th [class.active]="order === 'name'" (click)="setOrder('name')">Person
+            <span [hidden]="!reverse">▼</span>
+            <span [hidden]="reverse">▲</span>
           </th>
-          <!-- <th (click)="sort('email')">Email
-            <span class="glyphicon sort-icon" *ngIf="key =='email'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-          </th> -->
           <th>Email</th>
-          <!-- <th (click)="sort('subject')">Subject
-            <span class="glyphicon sort-icon" *ngIf="key =='subject'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-          </th> -->
           <th>Subject</th>
-          <th (click)="sortDate()">Date
-            <span [hidden]="reverse">▼</span>
-            <span [hidden]="!reverse">▲</span>
+          <th [class.active]="order === 'date'" (click)="setOrder('date')">Date
+            <span [hidden]="!reverse">▼</span>
+            <span [hidden]="reverse">▲</span>
           </th>
-          <!-- <th (click)="sort('Body')">Body
-            <span class="glyphicon sort-icon" *ngIf="key =='date'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-          </th> -->
           <th>Body</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let email of emails | orderBy: order : reverse | filter: customFilter | paginate: { itemsPerPage: 15, currentPage: p }; let i = index">
-          <!-- <td>{{i}}</td> -->
-          <td>{{email.name.first + ' ' + email.name.last}}</td>
+        <tr *ngFor="let email of emails | orderBy: 'name':false:'case-insensitive':customComparator | filter:customFilter | paginate: { itemsPerPage: 15, currentPage: p }; let i = index">
+          <td>{{i}}</td>
+          <td>{{email.name}}</td>
           <td>{{email.email}}</td>
           <td>{{email.subject}}</td>
           <td>{{email.date}}</td>
