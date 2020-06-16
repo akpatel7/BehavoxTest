@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { from } from 'rxjs';
 import { OrderPipe } from 'ngx-order-pipe';
+
 
 // import { Email } from '../../models/email';
 import { EmailService } from '../../services/email/email.service';
@@ -20,8 +22,6 @@ export class AppComponent implements OnInit {
   reverse: boolean;
   //pagination page
   page: number;
-  //emails returned from email service API
-  emails: any[] = [];
   //collection to hold sorted emails
   sortedCollection: any[];
 
@@ -33,18 +33,23 @@ export class AppComponent implements OnInit {
     this.order = 'name';
     this.reverse = false;
     this.page = 1;
+    this.orderPipe = orderPipe;
     this.customComparator = this.emailService.customEmailNameComparator;
-    this.sortedCollection = orderPipe.transform(this.emailService.getMockedEmails(), 'name');
-    console.log(this.sortedCollection);
-  }
-
-  getEmails(): void {
-    // this.emailService.getEmails().then(emails => this.emails = emails);
   }
 
   ngOnInit(): void {
     this.getEmails();
   }
+
+  getEmails(): void {
+    const emails = from(this.emailService.getEmails());
+    
+    emails.subscribe(emails => {
+      this.sortedCollection = this.orderPipe.transform(emails, 'name');
+      console.log(this.sortedCollection);
+    });
+  }
+
 
   setOrder(value: string) {
     if (this.order === value) {

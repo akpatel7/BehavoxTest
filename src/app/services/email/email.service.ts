@@ -12,8 +12,8 @@ export class EmailService {
 
     getEmails(): Promise<Email[]> {
         return new Promise(resolve => {
-            // Simulate server latency with 3 second delay
-            setTimeout(() => resolve(this.getMockedEmails()), 3000);
+            // Simulate server latency with 2 second delay
+            setTimeout(() => resolve(this.getMockedEmails()), 2000);
         });
     }
 
