@@ -13,22 +13,22 @@ import { EmailService } from '../../services/email/email.service';
   providers: [EmailService]
 })
 export class AppComponent implements OnInit {
-  title: string = 'Email Archive Viewer';
-  //filter
+  title = 'Email Archive Viewer';
+  // filter
   customFilter: string;
-  //sorting
-  order: string; //set default
-  //chevron direction on columns
+  // sorting
+  order: string; // set default
+  // chevron direction on columns
   reverse: boolean;
-  //pagination page
+  // pagination page
   page: number;
-  //collection to hold sorted emails
+  // collection to hold sorted emails
   sortedCollection: any[];
 
   customComparator: (a: string, b: string) => number;
 
   constructor(private emailService: EmailService, private orderPipe: OrderPipe) {
-    //set defaults
+    // set defaults
     this.customFilter = '';
     this.order = 'name';
     this.reverse = false;
@@ -42,9 +42,8 @@ export class AppComponent implements OnInit {
   }
 
   getEmails(): void {
-    const emails = from(this.emailService.getEmails());
-    
-    emails.subscribe(emails => {
+    const emailData = from(this.emailService.getEmails());
+    emailData.subscribe(emails => {
       this.sortedCollection = this.orderPipe.transform(emails, 'name');
       console.log(this.sortedCollection);
     });

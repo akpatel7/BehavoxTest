@@ -14,8 +14,8 @@ import { AppComponent } from '../components/app/app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    Ng2SearchPipeModule, //importing the filter package here
-    NgxPaginationModule, //importing the pagination package here,
+    Ng2SearchPipeModule, // importing the filter package here
+    NgxPaginationModule, // importing the pagination package here,
     OrderModule // importing the sorting package here
   ],
   providers: [],

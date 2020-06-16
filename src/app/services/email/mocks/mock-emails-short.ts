@@ -1,44 +1,64 @@
 import { Email } from '../../../models/email';
-
+// tslint:disable
 export const EMAILS: Email[] = [
     {
-        "_id": "5ee84b85306c8debd8e874e7",
-        "index": 0,
-        "guid": "7d9930ff-58ff-4398-a561-d2ec62a190bb",
-        "name": "Amit",
-        "email": "robertson.white@behavox.com",
-        "subject": "Hockey team",
-        "date": "Friday, August 31, 2018 4:07 AM",
-        "body": "Velit qui consectetur nulla pariatur. Ipsum labore irure culpa enim aliquip commodo. Reprehenderit est id duis dolore et aliqua dolore incididunt cupidatat. Pariatur cupidatat tempor labore ipsum ad aute excepteur non in reprehenderit. Consequat in laborum mollit ullamco. Quis laborum fugiat qui ea esse cillum id ex sint mollit. Consequat minim duis nulla minim."
+      "index": 0,
+      "guid": "ed3d4d3c-279c-4d8d-a037-0e2e5ecdc670",
+      "name": {
+        "first": "Jodi",
+        "last": "Wilkinson"
+      },
+      "email": "jodi.wilkinson@behavox.com",
+      "subject": "Internal",
+      "date": "Tuesday, July 31, 2018 2:07 PM",
+      "body": "Dolor cupidatat dolore non non nostrud tempor deserunt Lorem enim deserunt dolor duis Lorem adipisicing. Nulla velit ipsum amet eu eu ea. Ea dolore culpa et sit tempor tempor qui sint excepteur adipisicing. Voluptate sint id amet aliquip officia enim culpa commodo et consequat enim in tempor. Ex sunt laboris consequat eiusmod deserunt. Consequat esse Lorem mollit incididunt labore. Magna commodo incididunt duis sit tempor dolor fugiat anim mollit fugiat dolor excepteur minim esse."
     },
     {
-        "_id": "5ee84b85a355f20816536db7",
-        "index": 1,
-        "guid": "2792868a-bc6a-49cd-b034-24ccdb100a61",
-        "name": "Giles",
-        "email": "giles.sosa@behavox.com",
-        "subject": "Charity run",
-        "date": "Saturday, May 28, 2016 5:27 AM",
-        "body": "Et sunt tempor aute anim do eiusmod voluptate. Elit id duis tempor elit ea veniam. Adipisicing mollit consequat voluptate magna et. Dolor elit pariatur ea Lorem aliqua officia laborum occaecat elit amet minim laboris irure do."
+      "index": 1,
+      "guid": "bc35a592-e109-4566-b80c-d407d3dc0d83",
+      "name": {
+        "first": "Myrtle",
+        "last": "Perkins"
+      },
+      "email": "myrtle.perkins@behavox.com",
+      "subject": "Urgent: Memo",
+      "date": "Friday, February 13, 2015 3:36 PM",
+      "body": "Occaecat velit incididunt labore laborum excepteur. Enim culpa ex duis ut reprehenderit dolore. Non dolor enim consequat occaecat excepteur fugiat officia et esse ullamco dolor Lorem."
     },
     {
-        "_id": "5ee84b85db824000560d0bf4",
-        "index": 2,
-        "guid": "d72aee52-1b51-471c-8a79-2bc7c9ff10c2",
-        "name": "Lauren",
-        "email": "lauren.golden@behavox.com",
-        "subject": "Hockey team",
-        "date": "Sunday, February 26, 2017 6:32 PM",
-        "body": "Exercitation cupidatat duis nostrud eu velit. Laboris eiusmod occaecat eu aliquip. Aute velit labore quis ex officia elit cillum adipisicing est adipisicing eiusmod enim deserunt fugiat. Mollit sit veniam esse minim duis eiusmod cillum proident anim ex non elit. In ullamco excepteur sint quis laborum nostrud cupidatat incididunt velit. Lorem mollit sint dolor sit sint dolor incididunt non velit sit officia exercitation."
+      "index": 2,
+      "guid": "e2200ba7-4632-493e-aa29-1be64c63818f",
+      "name": {
+        "first": "Farrell",
+        "last": "Bell"
+      },
+      "email": "farrell.bell@behavox.com",
+      "subject": "Internal",
+      "date": "Sunday, September 27, 2015 11:15 PM",
+      "body": "Excepteur ullamco excepteur non officia do officia ad do aliqua anim laborum irure. Ad anim sit tempor pariatur quis. Aliqua magna ullamco aliquip magna mollit ad exercitation magna exercitation tempor elit cupidatat. Do aliquip pariatur amet occaecat pariatur fugiat. Veniam commodo sint eiusmod exercitation labore ad."
     },
     {
-        "_id": "5ee84b85c10720872f417826",
-        "index": 3,
-        "guid": "04711948-8d2b-49e3-a172-1849f1b5aa6a",
-        "name": "West",
-        "email": "west.obrien@behavox.com",
-        "subject": "Latest Tech",
-        "date": "Wednesday, June 6, 2018 8:28 PM",
-        "body": "Consectetur eiusmod ullamco fugiat sint veniam adipisicing velit. Ad reprehenderit occaecat laboris consequat quis. Lorem magna reprehenderit nulla sint officia ullamco sit excepteur officia velit."
+      "index": 3,
+      "guid": "3b5dc5e0-83d5-40e1-a53c-b0c743ebeff8",
+      "name": {
+        "first": "Benjamin",
+        "last": "Dodson"
+      },
+      "email": "benjamin.dodson@behavox.com",
+      "subject": "Charity run",
+      "date": "Thursday, July 6, 2017 11:38 PM",
+      "body": "Esse consectetur exercitation mollit nisi sunt Lorem ipsum incididunt aliquip veniam officia duis. Veniam eu dolor cillum esse sunt enim cillum. Fugiat proident incididunt ipsum ex reprehenderit proident esse id ad ad pariatur elit laborum quis. Commodo ex consequat ad dolor nostrud incididunt. Nisi do reprehenderit consequat minim laboris duis reprehenderit magna nisi magna cillum aute ea dolor."
+    },
+    {
+      "index": 4,
+      "guid": "5f75c75e-a4b7-4b6c-a3e8-15f54d58f8e4",
+      "name": {
+        "first": "Eleanor",
+        "last": "Mack"
+      },
+      "email": "eleanor.mack@behavox.com",
+      "subject": "Hockey team",
+      "date": "Thursday, March 22, 2018 4:40 AM",
+      "body": "Ex id culpa sint nulla id velit enim ut nulla veniam in in magna nostrud. Officia cillum in aliquip officia ex consequat magna laborum quis. Labore eiusmod labore laborum sit nulla esse dolore laborum deserunt Lorem sit labore sunt voluptate. Duis aute id sit velit adipisicing. Sunt laborum officia exercitation officia anim eiusmod. Est magna occaecat occaecat elit nulla dolore quis Lorem. Ut cupidatat Lorem proident fugiat elit consequat sunt aliquip cillum."
     }
-];
+  ];
