@@ -14,8 +14,9 @@
       <thead>
         <tr>
           <!-- <th>#</th> -->
-          <th (click)="sort('name')">Person
-            <span class="glyphicon sort-icon" *ngIf="key =='name'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+          <th (click)="sortName()">Person
+            <span [hidden]="reverse">▼</span>
+            <span [hidden]="!reverse">▲</span>
           </th>
           <!-- <th (click)="sort('email')">Email
             <span class="glyphicon sort-icon" *ngIf="key =='email'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
@@ -25,8 +26,9 @@
             <span class="glyphicon sort-icon" *ngIf="key =='subject'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
           </th> -->
           <th>Subject</th>
-          <th (click)="sort('date')">Date
-            <span class="glyphicon sort-icon" *ngIf="key =='date'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+          <th (click)="sortDate()">Date
+            <span [hidden]="reverse">▼</span>
+            <span [hidden]="!reverse">▲</span>
           </th>
           <!-- <th (click)="sort('Body')">Body
             <span class="glyphicon sort-icon" *ngIf="key =='date'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
@@ -35,7 +37,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let email of emails | orderBy: key : reverse | filter: customFilter | paginate: { itemsPerPage: 15, currentPage: p }; let i = index">
+        <tr *ngFor="let email of emails | orderBy: order : reverse | filter: customFilter | paginate: { itemsPerPage: 15, currentPage: p }; let i = index">
           <!-- <td>{{i}}</td> -->
           <td>{{email.name.first + ' ' + email.name.last}}</td>
           <td>{{email.email}}</td>
