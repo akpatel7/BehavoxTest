@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { Email } from '../../models/email';
 import { EMAILS } from './mocks/mock-emails-short';
-
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class EmailService {
 
     getMockedEmails(): any[] {
