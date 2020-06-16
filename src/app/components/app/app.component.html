@@ -28,16 +28,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let email of emails | orderBy: 'name':false:'case-insensitive':customComparator | filter:customFilter | paginate: { itemsPerPage: 15, currentPage: p }; let i = index">
+        <tr *ngFor="let item of sortedCollection | orderBy: 'name':false:true:customComparator | filter:customFilter | paginate: { itemsPerPage: 15, currentPage: page }; let i = index">
           <td>{{i}}</td>
-          <td>{{email.name}}</td>
-          <td>{{email.email}}</td>
-          <td>{{email.subject}}</td>
-          <td>{{email.date}}</td>
-          <td>{{email.body}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.subject}}</td>
+          <td>{{item.date}}</td>
+          <td>{{item.body}}</td>
         </tr>
       </tbody>
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
     </table>
   </div>
 </div>

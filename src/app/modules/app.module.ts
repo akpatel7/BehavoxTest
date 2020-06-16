@@ -5,7 +5,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { OrderModule } from 'ngx-order-pipe';
 
-import { AppComponent } from './app.component';
+import { AppComponent } from '../components/app/app.component';
 
 @NgModule({
   declarations: [
