@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-
+import moment from 'moment';
 
 import { Email } from '../../models/email';
 import { EMAILS } from './mocks/mock-emails-short';
@@ -50,18 +50,42 @@ export class EmailService {
     }
 
     customEmailDateComparator(itemA: string, itemB: string): number {
+       /*
+        https://stackblitz.com/edit/typescript-6m7alk
+        import moment from 'moment';
 
-        // Date format is date: '{{moment(this.date(new Date(2014, 0, 1), new Date())).format("LLLL")}}'
-        /*
-          import moment from 'moment'
-          import _ from 'lodash'
-          const dateArray = [{date:"2018-05-11"},{date:"2018-05-12"},{date:"2018-05-10"}]
-          const sortedArray = _.orderBy(array, (o: any) => {
-            return moment(o.date.format('YYYYMMDD');
-          }, ['asc']);
-          console.log(sortedDates)
-        */
+        var myArray = [{
+          name: "Joe Blow",
+          date: 'Wednesday, May 21, 2014 4:12 PM'
+        }, {
+          name: "Sam Snead",
+          date: 'Wednesday, May 21, 2014 4:13 PM'
+        },
+        {
+          name: "Sam Snead",
+          date: 'Saturday, April 9, 2016 9:15 PM'
+        },
+        {
+          name: "Sammy Snead",
+          date: 'Saturday, April 9, 2020 9:15 PM'
+        },
+        {
+          name: "John Smith",
+          date: 'Thursday, May 14, 2020 11:23 AM'
+        }];
 
-        return itemA > itemB ? 1 : -1;
+        myArray.sort(function compare(a, b) {
+          const dateA = moment(a.date);
+          const dateB = moment(b.date);
+          console.log(dateA, dateB, dateA.diff(dateB));
+          return dateA.diff(dateB);
+        });
+
+        console.log(myArray);
+       */
+      const dateA = moment(itemA);
+      const dateB = moment(itemB);
+      console.log(dateA, dateB, dateA.diff(dateB));
+      return dateA.diff(dateB);
     }
 }
