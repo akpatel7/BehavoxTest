@@ -45,7 +45,7 @@ describe('EmailService', () => {
       expect(comparison).toEqual(-1);
     });
 
-    it('should return -1', () => {
+    it('should return 0', () => {
       const item1 =  'Michael Jackson';
       const item2 =  'Michael Jackson';
       const comparison = service.customEmailNameComparator(item1, item2);
