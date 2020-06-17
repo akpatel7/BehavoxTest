@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Email } from '../../models/email';
 import { EMAILS } from './mocks/mock-emails-short';
+import { Name } from '../../models/name';
 @Injectable({
   providedIn: 'root',
 })
@@ -19,7 +20,18 @@ export class EmailService {
     }
 
     customEmailNameComparator(itemA: string, itemB: string): number {
-        return itemA > itemB ? 1 : -1;
+      const splitA = itemA.split(' ');
+      const splitB = itemB.split(' ');
+      const lastA = splitA[splitA.length - 1];
+      const lastB = splitB[splitB.length - 1];
+
+      if (lastA < lastB){
+        return -1;
+      }
+      if (lastA > lastB){
+        return 1;
+      }
+      return 0;
     }
 
     customEmailDateComparator(itemA: string, itemB: string): number {

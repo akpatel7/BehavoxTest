@@ -5,6 +5,7 @@ export class Email {
       first: string,
       last: string
     };
+    fullname: string;
     email: string;
     subject: string;
     date: string;
