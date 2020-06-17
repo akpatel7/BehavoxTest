@@ -19,21 +19,22 @@ export class AppComponent implements OnInit {
   order: string; // set default
   // chevron direction on columns
   reverse: boolean;
+  isCaseInsensitive: boolean;
   // pagination page
   page: number;
   // collection to hold sorted emails
   sortedCollection: any[];
 
-  customComparator: (a: string, b: string) => number;
+  comparator: any;
 
   constructor(private emailService: EmailService, private orderPipe: OrderPipe) {
     // set defaults
     this.customFilter = '';
-    this.order = 'name';
-    this.reverse = false;
+    this.order = 'fullname';
+    this.reverse = true;
+    this.isCaseInsensitive = true;
     this.page = 1;
     this.orderPipe = orderPipe;
-    this.customComparator = this.emailService.customEmailNameComparator;
   }
 
   ngOnInit(): void {
@@ -43,7 +44,8 @@ export class AppComponent implements OnInit {
   getEmails(): void {
     const emailData = from(this.emailService.getEmails());
     emailData.subscribe(emails => {
-      this.sortedCollection = this.orderPipe.transform(emails, 'name');
+      this.comparator = this.emailService.customEmailNameComparator;
+      this.sortedCollection = this.orderPipe.transform(emails, this.order, this.reverse, this.isCaseInsensitive, this.comparator);
       console.log(this.sortedCollection);
     });
   }
@@ -53,7 +55,7 @@ export class AppComponent implements OnInit {
     if (this.order === value) {
       this.reverse = !this.reverse;
     }
-
     this.order = value;
+    console.log(this.sortedCollection);
   }
 }
