@@ -50,42 +50,11 @@ export class EmailService {
     }
 
     customEmailDateComparator(itemA: string, itemB: string): number {
-       /*
-        https://stackblitz.com/edit/typescript-6m7alk
-        import moment from 'moment';
-
-        var myArray = [{
-          name: "Joe Blow",
-          date: 'Wednesday, May 21, 2014 4:12 PM'
-        }, {
-          name: "Sam Snead",
-          date: 'Wednesday, May 21, 2014 4:13 PM'
-        },
-        {
-          name: "Sam Snead",
-          date: 'Saturday, April 9, 2016 9:15 PM'
-        },
-        {
-          name: "Sammy Snead",
-          date: 'Saturday, April 9, 2020 9:15 PM'
-        },
-        {
-          name: "John Smith",
-          date: 'Thursday, May 14, 2020 11:23 AM'
-        }];
-
-        myArray.sort(function compare(a, b) {
-          const dateA = moment(a.date);
-          const dateB = moment(b.date);
-          console.log(dateA, dateB, dateA.diff(dateB));
-          return dateA.diff(dateB);
-        });
-
-        console.log(myArray);
-       */
       const dateA = moment(itemA);
       const dateB = moment(itemB);
-      console.log(dateA, dateB, dateA.diff(dateB));
-      return dateA.diff(dateB);
+      if (dateA.isValid() && dateB.isValid()) {
+        return dateA.diff(dateB);
+      }
+      return NaN;
     }
 }

@@ -94,12 +94,102 @@ describe('EmailService', () => {
   });
 
   describe('customEmailDateComparator', () => {
-    it('should return 1', () => {
-      expect(1).toEqual(1);
+    it('should return a positive number', () => {
+      let item1 =  'May 14, 2021 11:23 AM';
+      let item2 =  'May 14, 2020 11:23 AM';
+      let comparison = service.customEmailDateComparator(item1, item2);
+      expect(comparison).toBeGreaterThan(0);
+
+      item1 =  'Thursday, May 14, 2020 11:23 AM';
+      item2 =  'Saturday, April 9, 2016 9:15 PM';
+      comparison = service.customEmailDateComparator(item1, item2);
+      expect(comparison).toBeGreaterThan(0);
+
+      item1 =  'Wednesday, May 21, 2014 4:13 PM';
+      item2 =  'Wednesday, May 21, 2014 4:12 PM';
+      comparison = service.customEmailDateComparator(item1, item2);
+      expect(comparison).toBeGreaterThan(0);
+
+      item1 =  'May 14, 2021';
+      item2 =  'May 14, 2020';
+      comparison = service.customEmailDateComparator(item1, item2);
+      expect(comparison).toBeGreaterThan(0);
     });
 
-    it('should return -1', () => {
-      expect(-1).toEqual(-1);
+    it('should be a negative number', () => {
+      let item1 =  'May 14, 2020 11:23 AM';
+      let item2 =  'May 14, 2021 11:23 AM';
+      let comparison = service.customEmailDateComparator(item1, item2);
+      expect(comparison).toBeLessThan(0);
+
+      item1 =  'Saturday, April 9, 2016 9:15 PM';
+      item2 =  'Thursday, May 14, 2020 11:23 AM';
+      comparison = service.customEmailDateComparator(item1, item2);
+      expect(comparison).toBeLessThan(0);
+
+      item1 =  'Wednesday, May 21, 2014 4:12 PM';
+      item2 =  'Wednesday, May 21, 2014 4:13 PM';
+      comparison = service.customEmailDateComparator(item1, item2);
+      expect(comparison).toBeLessThan(0);
+
+      item1 =  'May 14, 2020';
+      item2 =  'May 14, 2021';
+      comparison = service.customEmailDateComparator(item1, item2);
+      expect(comparison).toBeLessThan(0);
+    });
+
+    it('should return 0', () => {
+      let item1 =  'Thursday, May 14, 2020 11:23 AM';
+      let item2 =  'Thursday, May 14, 2020 11:23 AM';
+      let comparison = service.customEmailDateComparator(item1, item2);
+      expect(comparison).toEqual(0);
+
+      item1 =  'Thursday, May 14, 2020';
+      item2 =  'Thursday, May 14, 2020';
+      comparison = service.customEmailDateComparator(item1, item2);
+      expect(comparison).toEqual(0);
+
+      item1 =  'May 14, 2020 11:23 AM';
+      item2 =  'May 14, 2020 11:23 AM';
+      comparison = service.customEmailDateComparator(item1, item2);
+      expect(comparison).toEqual(0);
+    });
+
+    it('should return NaN', () => {
+      let item1 =  'DUMMY';
+      let item2 =  'DUMMY';
+      let comparison = service.customEmailDateComparator(item1, item2);
+      expect(comparison).toEqual(NaN);
+
+      item1 =  '';
+      item2 =  '';
+      comparison = service.customEmailDateComparator(item1, item2);
+      expect(comparison).toEqual(NaN);
+
+      item1 =  'Thursday, May 14, 2020 11:23 AM';
+      item2 =  'DUMMY';
+      comparison = service.customEmailDateComparator(item1, item2);
+      expect(comparison).toEqual(NaN);
+
+      item1 =  '';
+      item2 =  'Thursday, May 14, 2020 11:23 AM';
+      comparison = service.customEmailDateComparator(item1, item2);
+      expect(comparison).toEqual(NaN);
+
+      item1 =  'Thursday, May 14, 2020 11:23 AM';
+      item2 =  'Thursday, May 14, 2020 11:23 MM';
+      comparison = service.customEmailDateComparator(item1, item2);
+      expect(comparison).toEqual(NaN);
+
+      item1 =  'Thursday, May 14, 2020 11:23 MM';
+      item2 =  'Thursday, May 14, 2020 11:23 AM';
+      comparison = service.customEmailDateComparator(item1, item2);
+      expect(comparison).toEqual(NaN);
+
+      item1 =  'Thursday, May 14, 2020 13:23 AM';
+      item2 =  'Thursday, May 14, 2020 11:23 AM';
+      comparison = service.customEmailDateComparator(item1, item2);
+      expect(comparison).toEqual(NaN);
     });
   });
 });
