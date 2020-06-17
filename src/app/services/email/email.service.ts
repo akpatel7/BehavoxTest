@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import moment from 'moment';
 
 import { Email } from '../../models/email';
-import { EMAILS } from './mocks/mock-emails-short';
-import { Name } from '../../models/name';
+import { EMAILS } from './mocks/mock-emails';
 @Injectable({
   providedIn: 'root',
 })

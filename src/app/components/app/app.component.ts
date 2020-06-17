@@ -21,8 +21,10 @@ export class AppComponent implements OnInit {
   reverseNames: boolean;
   reverseDates: boolean;
   isCaseInsensitive: boolean;
-  // pagination page
+  // pagination start page
   page: number;
+  // pagination total items per page
+  itemsPerPage: number;
   // collection to hold sorted emails
   sortedCollection: any[];
   // compartor function to sort columns
@@ -37,6 +39,7 @@ export class AppComponent implements OnInit {
     this.reverseDates = true;
     this.isCaseInsensitive = true;
     this.page = 1;
+    this.itemsPerPage = 5;
     this.orderPipe = orderPipe;
     this.comparator = this.emailService.customEmailNameComparator;
   }
