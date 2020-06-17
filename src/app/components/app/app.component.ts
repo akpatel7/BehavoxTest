@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   // chevron direction on columns
   reverseNames: boolean;
   reverseDates: boolean;
+  // sorting case-sensitivity
   isCaseInsensitive: boolean;
   // pagination start page
   page: number;
@@ -34,20 +35,20 @@ export class AppComponent implements OnInit {
   constructor(private emailService: EmailService, private orderPipe: OrderPipe) {
     // set defaults
     this.customFilter = '';
-    this.order = 'fullname';
+    this.order = 'date'; // On page load we will sort by date
     this.reverseNames = false;
     this.reverseDates = true;
     this.isCaseInsensitive = true;
     this.page = 1;
     this.itemsPerPage = 5;
     this.orderPipe = orderPipe;
-    this.comparator = this.emailService.customEmailNameComparator;
+    this.comparator = this.emailService.customEmailDateComparator;
   }
 
   ngOnInit(): void {
     const emailData = from(this.emailService.getEmails());
     emailData.subscribe(emails => {
-      this.sortedCollection = this.orderPipe.transform(emails, this.order, this.reverseNames, this.isCaseInsensitive, this.comparator);
+      this.sortedCollection = this.orderPipe.transform(emails, this.order, this.reverseDates, this.isCaseInsensitive, this.comparator);
       console.log('Recieved emails', this.sortedCollection);
     });
   }
