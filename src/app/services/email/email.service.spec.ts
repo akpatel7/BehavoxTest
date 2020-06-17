@@ -32,23 +32,63 @@ describe('EmailService', () => {
 
   describe('customEmailNameComparator', () => {
     it('should return 1', () => {
-      const item1 =  'Zack Knight';
-      const item2 =  'Michael Jackson';
-      const comparison = service.customEmailNameComparator(item1, item2);
+      let item1 =  'Cora Joyner';
+      let item2 =  'Tracie Hunt';
+      let comparison = service.customEmailNameComparator(item1, item2);
+      expect(comparison).toEqual(1);
+
+      item1 =  'Tracie';
+      item2 =  'Cora';
+      comparison = service.customEmailNameComparator(item1, item2);
+      expect(comparison).toEqual(1);
+
+      item1 =  ' Joyner';
+      item2 =  ' Hunt';
+      comparison = service.customEmailNameComparator(item1, item2);
+      expect(comparison).toEqual(1);
+
+      item1 =  'Tracie Joyner';
+      item2 =  'Cora Joyner';
+      comparison = service.customEmailNameComparator(item1, item2);
       expect(comparison).toEqual(1);
     });
 
     it('should return -1', () => {
-      const item1 =  'Michael Jackson';
-      const item2 =  'Zack Knight';
-      const comparison = service.customEmailNameComparator(item1, item2);
+      let item1 =  'Tracie Hunt';
+      let item2 =  'Cora Joyner';
+      let comparison = service.customEmailNameComparator(item1, item2);
+      expect(comparison).toEqual(-1);
+
+      item1 =  'Cora';
+      item2 =  'Tracie';
+      comparison = service.customEmailNameComparator(item1, item2);
+      expect(comparison).toEqual(-1);
+
+      item1 =  ' Hunt';
+      item2 =  ' Joyner';
+      comparison = service.customEmailNameComparator(item1, item2);
+      expect(comparison).toEqual(-1);
+
+      item1 =  'Cora Joyner';
+      item2 =  'Tracie Joyner';
+      comparison = service.customEmailNameComparator(item1, item2);
       expect(comparison).toEqual(-1);
     });
 
     it('should return 0', () => {
-      const item1 =  'Michael Jackson';
-      const item2 =  'Michael Jackson';
-      const comparison = service.customEmailNameComparator(item1, item2);
+      let item1 =  'Cora Joyner';
+      let item2 =  'Cora Joyner';
+      let comparison = service.customEmailNameComparator(item1, item2);
+      expect(comparison).toEqual(0);
+
+      item1 =  'Cora';
+      item2 =  'Cora';
+      comparison = service.customEmailNameComparator(item1, item2);
+      expect(comparison).toEqual(0);
+
+      item1 =  ' Hunt';
+      item2 =  'Hunt ';
+      comparison = service.customEmailNameComparator(item1, item2);
       expect(comparison).toEqual(0);
     });
   });

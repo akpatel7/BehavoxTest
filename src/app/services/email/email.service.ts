@@ -20,16 +20,29 @@ export class EmailService {
     }
 
     customEmailNameComparator(itemA: string, itemB: string): number {
-      const splitA = itemA.toString().split(' ');
-      const splitB = itemB.toString().split(' ');
+      const a = itemA.toString().trim();
+      const b = itemB.toString().trim();
+      const splitA = a.split(' ');
+      const splitB = b.split(' ');
       const lastA = splitA[splitA.length - 1];
       const lastB = splitB[splitB.length - 1];
 
-      if (lastA < lastB){
+      if (lastA < lastB) { 
         return -1;
       }
-      if (lastA > lastB){
+      if (lastA > lastB) {
         return 1;
+      }
+      if (lastA === lastB) {
+        const firstA = splitA[0];
+        const firstB = splitB[0];
+
+        if (firstA < firstB){
+          return -1;
+        }
+        if (firstA > firstB){
+          return 1;
+        }
       }
       return 0;
     }
