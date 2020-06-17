@@ -18,44 +18,58 @@ export class AppComponent implements OnInit {
   // sorting
   order: string; // set default
   // chevron direction on columns
-  reverse: boolean;
+  reverseNames: boolean;
+  reverseDates: boolean;
   isCaseInsensitive: boolean;
   // pagination page
   page: number;
   // collection to hold sorted emails
   sortedCollection: any[];
+  // compartor function to sort columns
+  comparator: (itemA: string, itemB: string) => number;
 
-  comparator: any;
-
+  // TODO: make email table a child component
   constructor(private emailService: EmailService, private orderPipe: OrderPipe) {
     // set defaults
     this.customFilter = '';
     this.order = 'fullname';
-    this.reverse = true;
+    this.reverseNames = false;
+    this.reverseDates = true;
     this.isCaseInsensitive = true;
     this.page = 1;
     this.orderPipe = orderPipe;
+    this.comparator = this.emailService.customEmailNameComparator;
   }
 
   ngOnInit(): void {
-    this.getEmails();
-  }
-
-  getEmails(): void {
     const emailData = from(this.emailService.getEmails());
     emailData.subscribe(emails => {
-      this.comparator = this.emailService.customEmailNameComparator;
-      this.sortedCollection = this.orderPipe.transform(emails, this.order, this.reverse, this.isCaseInsensitive, this.comparator);
-      console.log(this.sortedCollection);
+      this.sortedCollection = this.orderPipe.transform(emails, this.order, this.reverseNames, this.isCaseInsensitive, this.comparator);
+      console.log('Recieved emails', this.sortedCollection);
     });
   }
 
+  reOrder(key: string, comparator: (itemA: string, itemB: string) => number, reverse: boolean) {
+    this.comparator = this.emailService.customEmailNameComparator;
+    this.sortedCollection = this.orderPipe.transform(
+      this.sortedCollection,
+      key,
+      reverse,
+      this.isCaseInsensitive,
+      comparator);
+    console.log('reOrdered with key', key, ' reverse', reverse, this.sortedCollection);
+  }
 
-  setOrder(value: string) {
-    if (this.order === value) {
-      this.reverse = !this.reverse;
+  setOrder(key: string) {
+    if (key === 'fullname') {
+      this.reverseNames = !this.reverseNames;
+      this.reverseDates = false;
+      this.reOrder(key, this.emailService.customEmailNameComparator, this.reverseNames);
     }
-    this.order = value;
-    console.log(this.sortedCollection);
+    if (key === 'date') {
+      this.reverseDates = !this.reverseDates;
+      this.reverseNames = true;
+      this.reOrder(key, this.emailService.customEmailDateComparator, this.reverseDates);
+    }
   }
 }

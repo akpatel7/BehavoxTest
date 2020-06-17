@@ -14,21 +14,21 @@
       <thead>
         <tr>
           <th>#</th>
-          <th [class.active]="order === 'name'" (click)="setOrder('name')">Person
-            <span [hidden]="!reverse">▼</span>
-            <span [hidden]="reverse">▲</span>
+          <th [class.active]="order === 'fullname'" (click)="setOrder('fullname')">Person
+            <span [hidden]="!reverseNames">▼</span>
+            <span [hidden]="reverseNames">▲</span>
           </th>
           <th>Email</th>
           <th>Subject</th>
           <th [class.active]="order === 'date'" (click)="setOrder('date')">Date
-            <span [hidden]="!reverse">▼</span>
-            <span [hidden]="reverse">▲</span>
+            <span [hidden]="!reverseDates">▼</span>
+            <span [hidden]="reverseDates">▲</span>
           </th>
           <th>Body</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of sortedCollection | orderBy:  order : reverse  : comparator | filter:customFilter | paginate: { itemsPerPage: 15, currentPage: page }; let i = index">
+        <tr *ngFor="let item of sortedCollection | filter:customFilter | paginate: { itemsPerPage: 15, currentPage: page }; let i = index">
           <td>{{i}}</td>
           <td>{{item.fullname}}</td>
           <td>{{item.email}}</td>
