@@ -3,17 +3,17 @@ import { AppComponent } from './app.component';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { OrderPipe } from 'ngx-order-pipe';
+// import { OrderPipe } from 'ngx-order-pipe';
 
-import {Pipe, PipeTransform} from '@angular/core';
+// import {Pipe, PipeTransform} from '@angular/core';
 
-@Pipe({name: 'orderBy'})
-class MockPipe implements PipeTransform {
-    transform(value: number): number {
-        // blah blah
-        return value;
-    }
-}
+// @Pipe({name: 'orderBy'})
+// class MockPipe implements PipeTransform {
+//     transform(value: number): number {
+//         // blah blah
+//         return value;
+//     }
+// }
 
 
 describe('AppComponent', () => {
@@ -24,11 +24,7 @@ describe('AppComponent', () => {
         NgxPaginationModule
       ],
       declarations: [
-        AppComponent,
-        MockPipe
-      ],
-      providers: [
-        OrderPipe
+        AppComponent
       ]
     }).compileComponents();
   }));

@@ -1,0 +1,32 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+import { EmailDetailComponent } from './email-detail.component';
+
+describe('EmailDetailComponent', () => {
+  let component: EmailDetailComponent;
+  let fixture: ComponentFixture<EmailDetailComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        Ng2SearchPipeModule,
+        NgxPaginationModule
+      ],
+      declarations: [ EmailDetailComponent ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(EmailDetailComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

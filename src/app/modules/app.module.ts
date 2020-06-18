@@ -6,10 +6,16 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { OrderModule } from 'ngx-order-pipe';
 
 import { AppComponent } from '../components/app/app.component';
+import { EmailArchiveComponent } from '../components/email-archive/email-archive/email-archive.component';
+import { EmailDetailComponent } from '../components/email-archive/email-detail/email-detail.component';
+import { EmailSearchComponent } from '../components/email-archive/email-search/email-search.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EmailArchiveComponent,
+    EmailDetailComponent,
+    EmailSearchComponent
   ],
   imports: [
     BrowserModule,

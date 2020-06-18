@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+        <!-- <app-email-search></app-email-search> -->
+        <app-email-detail 
+            [emails]="emailList"
+            [reverseNames]="reverseNames"
+            [reverseDates]="reverseDates"
+            (sortOrderSelected)="setOrder($event)"
+            >
+        </app-email-detail>
+    </div>
+</div>
