@@ -4,6 +4,9 @@
     class="form-control"
     type="text"
     name="search"
-    [(ngModel)]="customFilter"
+    placeholder="Enter search terms here"
+    [(ngModel)]="filterText"
+    (keyup)="customFilterChangeValue($event)"
   />
+  <button (click)="clearFilter()">Clear</button>
 </nav>

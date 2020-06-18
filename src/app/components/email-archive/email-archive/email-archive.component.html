@@ -1,11 +1,14 @@
 <div class="container">
     <div class="row">
-        <!-- <app-email-search></app-email-search> -->
+        <app-email-search 
+            (customFilterChanged)="customFilterUpdate($event)">
+        </app-email-search>
         <app-email-detail 
-            [emails]="emailList"
+            [emails]="emailCollection"
             [reverseNames]="reverseNames"
             [reverseDates]="reverseDates"
             (sortOrderSelected)="setOrder($event)"
+            [filter]="customFilter"
             >
         </app-email-detail>
     </div>

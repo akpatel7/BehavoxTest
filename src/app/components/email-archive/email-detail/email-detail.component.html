@@ -1,18 +1,9 @@
-<nav class="navbar">
-  <label for="search">Search</label>
-  <input
-    class="form-control"
-    type="text"
-    name="search"
-    [(ngModel)]="customFilter"
-  />
-</nav>
 <table class="table">
   <thead>
     <tr>
       <th
-        [class.active]="order === 'fullname'"
-        (click)="setOrderKey('fullname')"
+        [class.active]=""
+        (click)="setOrder('fullname')"
       >
         Person
         <span [hidden]="!reverseNames">▼</span>
@@ -20,7 +11,8 @@
       </th>
       <th>Email</th>
       <th>Subject</th>
-      <th [class.active]="order === 'date'" (click)="setOrder('date')">
+      <th [class.active]=""
+          (click)="setOrder('date')">
         Date
         <span [hidden]="!reverseDates">▼</span>
         <span [hidden]="reverseDates">▲</span>
@@ -32,9 +24,9 @@
     <tr
       *ngFor="
         let email of emails
-          | filter: customFilter
+          | filter: filter
           | paginate
-            : { itemsPerPage: totalItemsPerPage, currentPage: currentPage };
+            : { itemsPerPage: totalItemsPerPage, currentPage: page };
         let i = index
       "
     >

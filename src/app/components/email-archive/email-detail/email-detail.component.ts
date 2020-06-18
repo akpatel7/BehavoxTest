@@ -28,8 +28,7 @@ export class EmailDetailComponent {
     this.totalItemsPerPage = 5;
   }
 
-  setOrderKey(key: string): void {
+  setOrder(key: string): void {
     this.sortOrderSelected.emit(key);
   }
-
 }

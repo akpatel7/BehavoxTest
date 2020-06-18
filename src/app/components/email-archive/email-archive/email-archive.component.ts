@@ -13,6 +13,8 @@ import { EmailService } from '../../../services/email/email.service';
 export class EmailArchiveComponent implements OnInit {
    // collection to hold sorted emails
    emailCollection: Email[];
+   // filter
+   customFilter: string;
    // sorting
    order: string; // set default
    // chevron direction on columns
@@ -56,5 +58,10 @@ export class EmailArchiveComponent implements OnInit {
       this.reverseNames = true;
       this.reOrder(key, this.emailService.customEmailDateComparator, this.reverseDates);
     }
+  }
+
+  customFilterUpdate(key: string) {
+    console.log('new filter: ', key);
+    this.customFilter = key;
   }
 }

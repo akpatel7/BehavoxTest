@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-email-search',
@@ -7,10 +7,17 @@ import { Component } from '@angular/core';
 })
 export class EmailSearchComponent {
 
-  // filter
-  customFilter: string;
+  filterText = '';
 
-  constructor() {
-    this.customFilter = '';
+  @Output() customFilterChanged = new EventEmitter<string>();
+
+  customFilterChangeValue($event) {
+    console.log('changed', $event.target.value);
+    this.customFilterChanged.emit($event.target.value);
+  }
+
+  clearFilter() {
+    this.filterText = '';
+    this.customFilterChanged.emit(this.filterText);
   }
 }
