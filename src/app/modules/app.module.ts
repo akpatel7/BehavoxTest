@@ -9,13 +9,16 @@ import { AppComponent } from '../components/app/app.component';
 import { EmailArchiveComponent } from '../components/email-archive/email-archive/email-archive.component';
 import { EmailDetailComponent } from '../components/email-archive/email-detail/email-detail.component';
 import { EmailSearchComponent } from '../components/email-archive/email-search/email-search.component';
+import { HighlightFilterPipe } from '../pipes/highlight-filter.pipe';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmailArchiveComponent,
     EmailDetailComponent,
-    EmailSearchComponent
+    EmailSearchComponent,
+    HighlightFilterPipe
   ],
   imports: [
     BrowserModule,

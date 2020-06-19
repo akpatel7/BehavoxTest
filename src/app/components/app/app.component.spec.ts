@@ -1,11 +1,19 @@
+import { Component } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+
+@Component({
+  selector: 'app-email-archive',
+  template: '<p>Mock Email Archive Component</p>'
+})
+class MockEmailArchiveComponent{}
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        MockEmailArchiveComponent
       ]
     }).compileComponents();
   }));

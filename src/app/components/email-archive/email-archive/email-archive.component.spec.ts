@@ -1,8 +1,27 @@
+import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OrderPipe } from 'ngx-order-pipe';
 
 import { EmailArchiveComponent } from './email-archive.component';
+
+@Component({
+  selector: 'app-email-search',
+  template: '<p>Mock Email Search Component</p>'
+})
+class MockEmailSearchComponent{}
+
+@Component({
+  selector: 'app-email-detail',
+  template: '<p>Mock Email Detail Component</p>'
+})
+class MockEmailDetailComponent {
+  public emails: any[];
+  public filter: string;
+  public reverseNames: boolean;
+  public  reverseDates: boolean;
+  public sortBy: string;
+}
 
 describe('EmailArchiveComponent', () => {
   let component: EmailArchiveComponent;
@@ -10,7 +29,11 @@ describe('EmailArchiveComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [EmailArchiveComponent],
+      declarations: [
+        EmailArchiveComponent,
+        MockEmailSearchComponent,
+        MockEmailDetailComponent
+      ],
       providers: [
         OrderPipe
       ]

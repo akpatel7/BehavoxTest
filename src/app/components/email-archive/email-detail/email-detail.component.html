@@ -40,9 +40,9 @@
     >
       <td>{{ email.fullname }}</td>
       <td>{{ email.email }}</td>
-      <td>{{ email.subject }}</td>
+      <td [innerHTML]="email.subject | highlightFilter : filter"></td>
       <td>{{ email.date }}</td>
-      <td>{{ email.body }}</td>
+      <td [innerHTML]="email.body | highlightFilter : filter"></td>
     </tr>
   </tbody>
   <pagination-controls (pageChange)="page = $event"></pagination-controls>
