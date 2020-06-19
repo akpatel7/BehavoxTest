@@ -26,7 +26,7 @@ export class EmailDetailComponent {
 
   constructor() {
     this.page = 1;
-    this.totalItemsPerPage = 5;
+    this.totalItemsPerPage = 3;
   }
 
   setOrder(key: string): void {

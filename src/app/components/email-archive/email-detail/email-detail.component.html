@@ -1,8 +1,9 @@
-<br/>
+<section class="container-fluid">
 <table class="table">
   <thead>
-    <tr>
+    <tr class="row">
       <th
+        class="col"
         [ngClass]="{'active-sortable-column' : sortBy==='fullname'}"
         (click)="setOrder('fullname')"
       >
@@ -12,9 +13,10 @@
         <span class="inactive-sortable-column" [hidden]="reverseNames && sortBy ==='fullname'">▼</span>
         <span class="inactive-sortable-column" [hidden]="!reverseNames && sortBy ==='fullname'">▲</span>
       </th>
-      <th>Email</th>
-      <th>Subject</th>
-      <th [ngClass]="{'active-sortable-column' : sortBy==='date'}"
+      <th class="col">Email</th>
+      <th class="col">Subject</th>
+      <th class="col"
+          [ngClass]="{'active-sortable-column' : sortBy==='date'}"
           (click)="setOrder('date')">
         Date
         <span class="active-sortable-column" [hidden]="!reverseDates || sortBy !== 'date'">▼</span>
@@ -22,14 +24,15 @@
         <span class="inactive-sortable-column" [hidden]="reverseDates && sortBy ==='date'">▼</span>
         <span class="inactive-sortable-column" [hidden]="!reverseDates && sortBy ==='date' ">▲</span>
       </th>
-      <th>Body</th>
+      <th class="col">Body</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngIf="!emails || !emails.length">
+    <tr class="row" 
+    *ngIf="!emails || !emails.length">
       No items to display
     </tr>
-    <tr
+    <tr class="row"
       *ngFor="
         let email of emails
           | filter: filter
@@ -38,12 +41,21 @@
         let i = index
       "
     >
-      <td>{{ email.fullname }}</td>
-      <td>{{ email.email }}</td>
-      <td [innerHTML]="email.subject | highlightFilter : filter"></td>
-      <td>{{ email.date }}</td>
-      <td [innerHTML]="email.body | highlightFilter : filter"></td>
+      <td class="col" >{{ email.fullname }}</td>
+      <td class="col" >{{ email.email }}</td>
+      <td class="col" 
+          [innerHTML]="email.subject | highlightFilter : filter">
+      </td>
+      <td class="col" >{{ email.date }}</td>
+      <td class="col" 
+          [innerHTML]="email.body | highlightFilter : filter">
+      </td>
+    </tr>
+    <tr class="row">
+      <td class="col">
+        <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
+      </td>
     </tr>
   </tbody>
-  <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </table>
+</section>

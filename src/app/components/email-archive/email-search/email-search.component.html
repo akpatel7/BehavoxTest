@@ -1,13 +1,15 @@
-<div id="search-container">
-  <label id="filter-label" for="search">Search:</label>
+<section id="container-fluid">
+  <div class="row" >
+    <label class="col" id="filter-label" for="search">Search:</label>
   <input
     id="filter-text"
-    class="form-control"
+    class="form-control col"
     type="text"
     name="search"
     placeholder="Enter search term"
     [(ngModel)]="filterText"
     (keyup)="customFilterChangeValue($event)"
   />
-  <button id="btn-filter-clear" type="button" class="btn btn-info" (click)="clearFilter()">Clear</button>
-</div>
+  <button class="col" id="btn-filter-clear" type="button" class="btn btn-info" (click)="clearFilter()">Clear</button>
+  </div>
+</section>

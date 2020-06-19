@@ -1,6 +1,8 @@
+/*
 thead > tr > th {
   cursor: pointer;
 }
+*/
 
 .active-sortable-column {
   color: lightseagreen;
@@ -9,19 +11,11 @@ thead > tr > th {
   color: lightgray;
 }
 
-.ngx-pagination {
-  padding-left: 0px !important;
+.my-pagination /deep/ .ngx-pagination {
+  display: inline-block;
+  margin: auto;
 }
 
-.ngx-pagination .current,
-.btn-info {
-  background: #17a2b8 !important;
-  border: transparent !important;
-  border-radius: 20px !important;
-}
-
-.ngx-pagination .current:hover {
-  background: #17a2b8 !important;
-  border-radius: 20px !important;
-  border: transparent !important;
+.my-pagination /deep/ .ngx-pagination .current {
+  background: lightseagreen;
 }
