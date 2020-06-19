@@ -1,3 +1,27 @@
-thead>tr>th {
-    cursor: pointer;
+thead > tr > th {
+  cursor: pointer;
+}
+
+.active-sortable-column {
+  color: lightseagreen;
+}
+.inactive-sortable-column {
+  color: lightgray;
+}
+
+.ngx-pagination {
+  padding-left: 0px !important;
+}
+
+.ngx-pagination .current,
+.btn-info {
+  background: #17a2b8 !important;
+  border: transparent !important;
+  border-radius: 20px !important;
+}
+
+.ngx-pagination .current:hover {
+  background: #17a2b8 !important;
+  border-radius: 20px !important;
+  border: transparent !important;
 }

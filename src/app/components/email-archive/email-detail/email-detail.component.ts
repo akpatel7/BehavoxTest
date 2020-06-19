@@ -15,6 +15,7 @@ export class EmailDetailComponent {
   // chevron direction on columns
   @Input() reverseNames: boolean;
   @Input() reverseDates: boolean;
+  @Input() sortBy: string;
   @Output() sortOrderSelected = new EventEmitter<string>();
 
   // pagination start page

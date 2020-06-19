@@ -1,12 +1,13 @@
-<nav class="navbar">
-  <label for="search">Search</label>
+<div id="search-container">
+  <label id="filter-label" for="search">Search:</label>
   <input
+    id="filter-text"
     class="form-control"
     type="text"
     name="search"
-    placeholder="Enter search terms here"
+    placeholder="Enter search term"
     [(ngModel)]="filterText"
     (keyup)="customFilterChangeValue($event)"
   />
-  <button (click)="clearFilter()">Clear</button>
-</nav>
+  <button id="btn-filter-clear" type="button" class="btn btn-info" (click)="clearFilter()">Clear</button>
+</div>

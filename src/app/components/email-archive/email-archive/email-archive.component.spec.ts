@@ -10,12 +10,12 @@ describe('EmailArchiveComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EmailArchiveComponent ],
+      declarations: [EmailArchiveComponent],
       providers: [
         OrderPipe
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

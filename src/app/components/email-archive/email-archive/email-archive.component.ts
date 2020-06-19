@@ -11,20 +11,20 @@ import { EmailService } from '../../../services/email/email.service';
   styleUrls: ['./email-archive.component.css']
 })
 export class EmailArchiveComponent implements OnInit {
-   // collection to hold sorted emails
-   emailCollection: Email[];
-   // filter
-   customFilter: string;
-   // sorting
-   order: string; // set default
-   // chevron direction on columns
-   reverseNames: boolean;
-   reverseDates: boolean;
-   // sorting case-sensitivity
-   isCaseInsensitive: boolean;
-   comparator: (itemA: string, itemB: string) => number;
+  // collection to hold sorted emails
+  emailCollection: Email[];
+  // filter
+  customFilter: string;
+  // sorting
+  order = 'date'; // set default
+  // chevron direction on columns
+  reverseNames = true;
+  reverseDates = true;
+  // sorting case-sensitivity
+  isCaseInsensitive: boolean;
+  comparator: (itemA: string, itemB: string) => number;
 
-  constructor(private emailService: EmailService, private orderPipe: OrderPipe)  {
+  constructor(private emailService: EmailService, private orderPipe: OrderPipe) {
   }
 
   ngOnInit(): void {
@@ -32,7 +32,6 @@ export class EmailArchiveComponent implements OnInit {
     from(this.emailService.getEmails()).subscribe(emails => {
       this.emailCollection = this.orderPipe.transform(emails, this.order, this.reverseDates, this.isCaseInsensitive, this.comparator);
       this.emailCollection = emails;
-      console.log('Email-archive: recieved emails', this.emailCollection);
     });
   }
 
@@ -44,16 +43,17 @@ export class EmailArchiveComponent implements OnInit {
       reverse,
       this.isCaseInsensitive,
       comparator);
-    console.log('Email-archive: reOrdered with key', key, ' reverse', reverse, this.emailCollection);
   }
 
   setOrder(key: string) {
     if (key === 'fullname') {
+      this.order = 'fullname';
       this.reverseNames = !this.reverseNames;
       this.reverseDates = false;
       this.reOrder(key, this.emailService.customEmailNameComparator, this.reverseNames);
     }
     if (key === 'date') {
+      this.order = 'date';
       this.reverseDates = !this.reverseDates;
       this.reverseNames = true;
       this.reOrder(key, this.emailService.customEmailDateComparator, this.reverseDates);
@@ -61,7 +61,7 @@ export class EmailArchiveComponent implements OnInit {
   }
 
   customFilterUpdate(key: string) {
-    console.log('new filter: ', key);
     this.customFilter = key;
   }
 }
+

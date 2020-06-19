@@ -1,0 +1,16 @@
+#search-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#filter-label {
+    padding-right: 10px;
+}
+
+#filter-text {
+    padding-right: 10px;
+}
+
+#btn-filter-clear {
+    padding-left: 10px;
+}
