@@ -1,1 +1,10 @@
 
+#filter-label {
+    max-width: 100px;
+    margin: auto;
+}
+
+#filter-text {
+    max-width: 500px;
+    margin-right: 10px;
+}

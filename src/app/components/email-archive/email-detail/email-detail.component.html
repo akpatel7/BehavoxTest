@@ -1,61 +1,94 @@
-<section class="container-fluid">
 <table class="table">
   <thead>
     <tr class="row">
       <th
         class="col"
-        [ngClass]="{'active-sortable-column' : sortBy==='fullname'}"
+        [ngClass]="{ 'active-sortable-column': sortBy === 'fullname' }"
         (click)="setOrder('fullname')"
       >
         Person
-        <span class="active-sortable-column" [hidden]="!reverseNames || sortBy !== 'fullname'">▼</span>
-        <span class="active-sortable-column" [hidden]="reverseNames || sortBy !== 'fullname'">▲</span>
-        <span class="inactive-sortable-column" [hidden]="reverseNames && sortBy ==='fullname'">▼</span>
-        <span class="inactive-sortable-column" [hidden]="!reverseNames && sortBy ==='fullname'">▲</span>
+        <span
+          class="active-sortable-column"
+          [hidden]="!reverseNames || sortBy !== 'fullname'"
+          >▼</span
+        >
+        <span
+          class="active-sortable-column"
+          [hidden]="reverseNames || sortBy !== 'fullname'"
+          >▲</span
+        >
+        <span
+          class="inactive-sortable-column"
+          [hidden]="reverseNames && sortBy === 'fullname'"
+          >▼</span
+        >
+        <span
+          class="inactive-sortable-column"
+          [hidden]="!reverseNames && sortBy === 'fullname'"
+          >▲</span
+        >
       </th>
       <th class="col">Email</th>
       <th class="col">Subject</th>
-      <th class="col"
-          [ngClass]="{'active-sortable-column' : sortBy==='date'}"
-          (click)="setOrder('date')">
+      <th
+        class="col"
+        [ngClass]="{ 'active-sortable-column': sortBy === 'date' }"
+        (click)="setOrder('date')"
+      >
         Date
-        <span class="active-sortable-column" [hidden]="!reverseDates || sortBy !== 'date'">▼</span>
-        <span class="active-sortable-column" [hidden]="reverseDates || sortBy !=='date'">▲</span>
-        <span class="inactive-sortable-column" [hidden]="reverseDates && sortBy ==='date'">▼</span>
-        <span class="inactive-sortable-column" [hidden]="!reverseDates && sortBy ==='date' ">▲</span>
+        <span
+          class="active-sortable-column"
+          [hidden]="!reverseDates || sortBy !== 'date'"
+          >▼</span
+        >
+        <span
+          class="active-sortable-column"
+          [hidden]="reverseDates || sortBy !== 'date'"
+          >▲</span
+        >
+        <span
+          class="inactive-sortable-column"
+          [hidden]="reverseDates && sortBy === 'date'"
+          >▼</span
+        >
+        <span
+          class="inactive-sortable-column"
+          [hidden]="!reverseDates && sortBy === 'date'"
+          >▲</span
+        >
       </th>
       <th class="col">Body</th>
     </tr>
   </thead>
   <tbody>
-    <tr class="row" 
-    *ngIf="!emails || !emails.length">
+    <tr class="row" *ngIf="!emails || !emails.length">
       No items to display
     </tr>
-    <tr class="row"
+    <tr
+      class="row"
       *ngFor="
         let email of emails
           | filter: filter
-          | paginate
-            : { itemsPerPage: totalItemsPerPage, currentPage: page };
+          | paginate: { itemsPerPage: totalItemsPerPage, currentPage: page };
         let i = index
       "
     >
-      <td class="col" >{{ email.fullname }}</td>
-      <td class="col" >{{ email.email }}</td>
-      <td class="col" 
-          [innerHTML]="email.subject | highlightFilter : filter">
-      </td>
-      <td class="col" >{{ email.date }}</td>
-      <td class="col" 
-          [innerHTML]="email.body | highlightFilter : filter">
-      </td>
+      <td class="col">{{ email.fullname }}</td>
+      <td class="col">{{ email.email }}</td>
+      <td
+        class="col"
+        [innerHTML]="email.subject | highlightFilter: filter"
+      ></td>
+      <td class="col">{{ email.date }}</td>
+      <td class="col" [innerHTML]="email.body | highlightFilter: filter"></td>
     </tr>
     <tr class="row">
       <td class="col">
-        <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
+        <pagination-controls
+          class="my-pagination"
+          (pageChange)="page = $event"
+        ></pagination-controls>
       </td>
     </tr>
   </tbody>
 </table>
-</section>
