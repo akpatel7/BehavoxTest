@@ -1,4 +1,47 @@
 # EmailArchiveViewer
+# BehavoxTest
+Techinal test for Behavox June 2020
+
+Instructions:
+
+You need to design and implement a tool for working with an archive of emails.
+Technical requirements:
+
+● It needs to be an Angular-based web application.
+
+For the purpose of this task, the email archive will be represented as a JSON file. You need to
+build a simple application which could be used to work with the data in this archive. Some of the
+basic user operations include viewing, filtering, search, etc.
+
+Functional requirements:
+
+● Filters by date and person contacts.
+
+● Text search.
+
+● Paging of results.
+
+● Bonus - Text search highlight (subject, body).
+
+● Bonus - Email threading.
+
+Assessment criteria
+
+● Completeness from the functional requirements point of view.
+
+● UX of the application.
+
+● Architecture.
+
+Notes
+
+● You don’t need to implement the backend part. It is enough to create a wrapper over the
+JSON file on the client side.
+
+It's up to you to decide on the implementation details.
+Test task must be uploaded to https://bitbucket.org/.
+Before starting to work on the task, please provide an estimation of the time you require to
+complete it.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.8.
 
