@@ -2,30 +2,30 @@
   <div class="row">
     <div class="col-md-auto">
       <label id="filter-label" for="search"><strong>Search:</strong></label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <input
-        id="filter-text"
-        class="form-control"
-        type="text"
-        name="search"
-        placeholder="Enter search term"
-        size="150"
-        [(ngModel)]="filterText"
-        (keyup)="customFilterChangeValue($event)"
-      />
-    </div>
-    <div class="col">
-      <button
-        id="btn-filter-clear"
-        type="button"
-        class="btn btn-info"
-        (click)="clearFilter()"
-      >
-        Clear
-      </button>
+      <div class="row">
+        <div class="col">
+          <input
+            id="filter-text"
+            class="form-control"
+            type="text"
+            name="search"
+            placeholder="Enter search term"
+            size="150"
+            [(ngModel)]="filterText"
+            (keyup)="customFilterChangeValue($event)"
+          />
+        </div>
+        <div class="col">
+          <button
+            id="btn-filter-clear"
+            type="button"
+            class="btn btn-info"
+            (click)="clearFilter()"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
